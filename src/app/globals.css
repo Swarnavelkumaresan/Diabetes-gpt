@@ -1,33 +1,257 @@
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
+  @tailwind components;
+  @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+  @layer base {
+    :root {
+      --background: 0 0% 100%;
+      --foreground: 222.2 84% 4.9%;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+      --card: 0 0% 100%;
+      --card-foreground: 222.2 84% 4.9%;
+
+      --popover: 0 0% 100%;
+      --popover-foreground: 222.2 84% 4.9%;
+
+      --primary: 222.2 47.4% 11.2%;
+      --primary-foreground: 210 40% 98%;
+
+      --secondary: 210 40% 96.1%;
+      --secondary-foreground: 222.2 47.4% 11.2%;
+
+      --muted: 210 40% 96.1%;
+      --muted-foreground: 215.4 16.3% 46.9%;
+
+      --accent: 210 40% 96.1%;
+      --accent-foreground: 222.2 47.4% 11.2%;
+
+      --destructive: 0 84.2% 60.2%;
+      --destructive-foreground: 210 40% 98%;
+
+      --border: 214.3 31.8% 91.4%;
+      --input: 214.3 31.8% 91.4%;
+      --ring: 222.2 84% 4.9%;
+
+      --radius: 0.5rem;
+    }
+
+    .dark {
+      --background: 222.2 84% 4.9%;
+      --foreground: 210 40% 98%;
+
+      --card: 222.2 84% 4.9%;
+      --card-foreground: 210 40% 98%;
+
+      --popover: 222.2 84% 4.9%;
+      --popover-foreground: 210 40% 98%;
+
+      --primary: 210 40% 98%;
+      --primary-foreground: 222.2 47.4% 11.2%;
+
+      --secondary: 217.2 32.6% 17.5%;
+      --secondary-foreground: 210 40% 98%;
+
+      --muted: 217.2 32.6% 17.5%;
+      --muted-foreground: 215 20.2% 65.1%;
+
+      --accent: 217.2 32.6% 17.5%;
+      --accent-foreground: 210 40% 98%;
+
+      --destructive: 0 62.8% 30.6%;
+      --destructive-foreground: 210 40% 98%;
+
+      --border: 217.2 32.6% 17.5%;
+      --input: 217.2 32.6% 17.5%;
+      --ring: 212.7 26.8% 83.9%;
+    }
   }
-}
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  @layer base {
+    * {
+      @apply border-border;
+    }
+    body {
+      @apply bg-background text-foreground;
+    }
   }
-}
+  .my-text-class {
+    margin-bottom: 1rem; /* mb-4 */
+    font-size: 12px;
+    /* line-height: 2.25rem; text-3xl */
+    font-weight: 800; /* font-extrabold */
+    color: #2b3d64; /* text-gray-900 */
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .my-text-class.fade-out {
+    opacity: 0;
+  }
+  
+  /* Medium screens (768px and up) */
+  @media (min-width: 768px) {
+    .my-text-class {
+      font-size: 3rem; /* md:text-5xl */
+      line-height: 1; /* md:text-5xl */
+    }
+  }
+  
+  /* Large screens (1024px and up) */
+  @media (min-width: 1024px) {
+    .my-text-class {
+      font-size: 3.75rem; /* lg:text-6xl */
+      line-height: 1; /* lg:text-6xl */
+    }
+  }
+  
+  .my-gradient-text {
+    color: transparent; /* text-transparent */
+    background-clip: text; /* bg-clip-text */
+    -webkit-background-clip: text; /* Required for some browsers */
+    background-image: linear-gradient(
+      to right,
+      #38bdf8,
+      #059669
+    ); /* bg-gradient-to-r from-sky-400 to-emerald-600 */
+  }
+  
+  .my-container {
+    max-width: 100%; /* container: usually Tailwind sets a max-width based on breakpoints, adjust as needed */
+    margin-left: auto;
+    margin-right: auto;
+    display: flex; /* flex */
+    margin-top: -3rem;
+    height: 100vh; /* h-screen */
+    flex-direction: column; /* flex-col */
+    align-items: center; /* items-center */
+    justify-content: center; /* justify-center */
+  }
+  
+  .custom-container {
+    margin-top: 1rem; /* mt-4 */
+    width: 100%; /* w-full */
+    max-width: 80rem; /* max-w-5xl */
+    display: flex; /* flex */
+    flex-direction: column; /* flex-col */
+    margin-bottom: 2.5rem; /* mb-10 */
+    height: 450px; /* h-screen */
+    background-color: #e2e8f0; /* bg-slate-200 */
+    border-radius: 0.375rem; /* rounded-md */
+    box-shadow:
+      0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+  }
+  
+  .custom-scroll-area {
+    flex-grow: 1; /* flex-grow */
+    margin-bottom: 0.5rem; /* mb-2 */
+    height: 60vh; /* h-[60vh] */
+    width: 100%; /* w-full */
+    border-radius: 0.375rem; /* rounded-md */
+    padding: 1rem; /* p-4 */
+    background-color: white; /* bg-white */
+    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06); /* shadow-inner */
+    overflow-y: auto; /* overflow-y-auto */
+  }
+  
+  .custom-error-message {
+    font-size: 0.875rem; /* text-sm */
+    color: #f87171; /* text-red-400 */
+  }
+  
+  .custom-message {
+    margin-right: 1.5rem; /* mr-6 */
+    white-space: pre-wrap; /* whitespace-pre-wrap */
+  }
+  
+  @media (min-width: 768px) {
+    .custom-message {
+      margin-right: 3rem; /* md:mr-12 */
+    }
+  }
+  
+  .custom-message-container {
+    margin-bottom: 1.5rem; /* mb-6 */
+    display: flex; /* flex */
+    gap: 0.75rem; /* gap-3 */
+  }
+  
+  .custom-assistant-message-container {
+    margin-bottom: 1.5rem; /* mb-6 */
+    display: flex; /* flex */
+    align-items: center; /* items-center */
+    gap: 0.75rem; /* gap-3 */
+  }
+  
+  .custom-message-content {
+    margin-top: 0.375rem; /* mt-1.5 */
+    width: 100%; /* w-full */
+  }
+  
+  .custom-flex-container {
+    display: flex; /* flex */
+    gap: 0.25rem; /* gap-1 */
+    align-items: center; /* items-center */
+  }
+  
+  .custom-text {
+    font-size: 0.875rem; /* text-sm */
+    color: #718096; /* text-zinc-600 */
+  }
+  
+  .custom-margin {
+    margin-top: 0.25rem; /* mt-1 */
+    margin-left: 0.75rem; /* ml-3 */
+  }
+  
+  .custom-form {
+    margin-top: auto; /* mt-auto */
+    position: relative; /* relative */
+    display: flex; /* flex */
+    width: 100%; /* w-full */
+    padding: 0.5rem; /* p-2 */
+    background-color: #f3f4f6; /* bg-gray-100 */
+    border-radius: 0 0 0.375rem 0.375rem; /* rounded-b-md */
+  }
+  
+  .custom-input {
+    width: 100%; /* w-full */
+    padding-right: 3rem; /* pr-12 */
+    padding: 1rem; /* p-4 */
+    border-radius: 0.375rem; /* rounded-md */
+    border: 1px solid #d1d5db; /* border border-gray-300 */
+    outline: none; /* focus:outline-none */
+    transition:
+      border-color 0.15s ease-in-out,
+      box-shadow 0.15s ease-in-out; /* focus:ring-2 focus:ring-emerald-500 focus:border-transparent */
+  }
+  
+  .custom-input::placeholder {
+    color: #9ca3af; /* placeholder:text-zinc-700 */
+    font-style: italic; /* placeholder:italic */
+  }
+  
+  .custom-input:focus {
+    border-color: #4fc1e9; /* focus:ring-emerald-500 */
+    box-shadow: 0 0 0 2px rgba(13, 120, 169, 0.5); /* focus:ring-2 */
+  }
+  
+  .custom-button {
+    margin-left: 0.5rem; /* ml-2 */
+    height: 3rem; /* h-12 */
+    width: 3rem; /* w-12 */
+    background-color: #4fc1e9; /* bg-emerald-500 */
+    color: #fff; /* text-white */
+    border-radius: 0.375rem; /* rounded-md */
+    display: flex; /* flex */
+    justify-content: center; /* justify-center */
+    align-items: center; /* items-center */
+  }
+  
+  .custom-button:hover {
+    background-color: #4fc1e9; /* hover:bg-emerald-600 */
+  }
+  
+  .custom-icon {
+    height: 1.5rem; /* h-6 */
+    width: 1.5rem; /* w-6 */
+  }
